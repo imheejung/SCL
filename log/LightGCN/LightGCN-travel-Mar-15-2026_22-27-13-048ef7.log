@@ -1,0 +1,232 @@
+Sun 15 Mar 2026 22:27:13 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2023
+state = INFO
+reproducibility = True
+data_path = ./travel
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1000
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'NDCG', 'Precision', 'MAP']
+topk = [1, 2, 3, 4, 5, 10, 20, 30, 50]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating'], 'user': ['user_id', 'post_num', 'follower', 'following', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = {'rating': '[0,inf)'}
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_layers = 3
+reg_weight = 0.0001
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cuda
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Sun 15 Mar 2026 22:27:14 INFO  travel
+The number of users: 2010
+Average actions of users: 18.721254355400696
+The number of items: 247
+Average actions of items: 152.890243902439
+The number of inters: 37611
+The sparsity of the dataset: 92.42431566862047%
+Remain Fields: ['user_id', 'item_id', 'rating', 'post_num', 'follower', 'following', 'timestamp']
+Sun 15 Mar 2026 22:27:14 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sun 15 Mar 2026 22:27:14 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Sun 15 Mar 2026 22:27:14 INFO  LightGCN(
+  (user_embedding): Embedding(2010, 64)
+  (item_embedding): Embedding(247, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 144448
+Sun 15 Mar 2026 22:27:14 INFO  trainable parameters: 144448
+Sun 15 Mar 2026 22:27:15 INFO  epoch 0 training [time: 0.52s, train loss: 5.5401]
+Sun 15 Mar 2026 22:27:16 INFO  epoch 0 evaluating [time: 0.34s, valid_score: 0.198100]
+Sun 15 Mar 2026 22:27:16 INFO  valid result: 
+recall@1 : 0.0757    recall@2 : 0.1215    recall@3 : 0.154    recall@4 : 0.1794    recall@5 : 0.2024    recall@10 : 0.2901    recall@20 : 0.4048    recall@30 : 0.4835    recall@50 : 0.5838    ndcg@1 : 0.1377    ndcg@2 : 0.1457    ndcg@3 : 0.1534    ndcg@4 : 0.1605    ndcg@5 : 0.1684    ndcg@10 : 0.1981    ndcg@20 : 0.2314    ndcg@30 : 0.2514    ndcg@50 : 0.2746    precision@1 : 0.1377    precision@2 : 0.115    precision@3 : 0.0985    precision@4 : 0.0864    precision@5 : 0.0791    precision@10 : 0.0573    precision@20 : 0.0406    precision@30 : 0.0327    precision@50 : 0.0244    map@1 : 0.1377    map@2 : 0.1259    map@3 : 0.1242    map@4 : 0.1257    map@5 : 0.1285    map@10 : 0.1393    map@20 : 0.1492    map@30 : 0.1539    map@50 : 0.1583
+Sun 15 Mar 2026 22:27:16 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:16 INFO  epoch 1 training [time: 0.19s, train loss: 5.5239]
+Sun 15 Mar 2026 22:27:16 INFO  epoch 1 evaluating [time: 0.31s, valid_score: 0.293700]
+Sun 15 Mar 2026 22:27:16 INFO  valid result: 
+recall@1 : 0.1115    recall@2 : 0.201    recall@3 : 0.2426    recall@4 : 0.2792    recall@5 : 0.3095    recall@10 : 0.4348    recall@20 : 0.567    recall@30 : 0.6417    recall@50 : 0.7295    ndcg@1 : 0.1865    ndcg@2 : 0.216    ndcg@3 : 0.2283    ndcg@4 : 0.2402    ndcg@5 : 0.2506    ndcg@10 : 0.2937    ndcg@20 : 0.3314    ndcg@30 : 0.3513    ndcg@50 : 0.3725    precision@1 : 0.1865    precision@2 : 0.1651    precision@3 : 0.1391    precision@4 : 0.1228    precision@5 : 0.1106    precision@10 : 0.0802    precision@20 : 0.0529    precision@30 : 0.0416    precision@50 : 0.0297    map@1 : 0.1865    map@2 : 0.1895    map@3 : 0.1896    map@4 : 0.1927    map@5 : 0.1968    map@10 : 0.214    map@20 : 0.2257    map@30 : 0.2311    map@50 : 0.2357
+Sun 15 Mar 2026 22:27:16 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:16 INFO  epoch 2 training [time: 0.17s, train loss: 5.4846]
+Sun 15 Mar 2026 22:27:17 INFO  epoch 2 evaluating [time: 0.31s, valid_score: 0.300000]
+Sun 15 Mar 2026 22:27:17 INFO  valid result: 
+recall@1 : 0.108    recall@2 : 0.2081    recall@3 : 0.2534    recall@4 : 0.2901    recall@5 : 0.3185    recall@10 : 0.4475    recall@20 : 0.5856    recall@30 : 0.6597    recall@50 : 0.7522    ndcg@1 : 0.1824    ndcg@2 : 0.2192    ndcg@3 : 0.2327    ndcg@4 : 0.2451    ndcg@5 : 0.2547    ndcg@10 : 0.3    ndcg@20 : 0.3393    ndcg@30 : 0.359    ndcg@50 : 0.3817    precision@1 : 0.1824    precision@2 : 0.169    precision@3 : 0.1418    precision@4 : 0.1253    precision@5 : 0.1123    precision@10 : 0.0822    precision@20 : 0.0546    precision@30 : 0.0425    precision@50 : 0.0307    map@1 : 0.1824    map@2 : 0.1907    map@3 : 0.1918    map@4 : 0.196    map@5 : 0.199    map@10 : 0.2179    map@20 : 0.2301    map@30 : 0.2354    map@50 : 0.2405
+Sun 15 Mar 2026 22:27:17 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:17 INFO  epoch 3 training [time: 0.19s, train loss: 5.4105]
+Sun 15 Mar 2026 22:27:17 INFO  epoch 3 evaluating [time: 0.31s, valid_score: 0.301100]
+Sun 15 Mar 2026 22:27:17 INFO  valid result: 
+recall@1 : 0.1083    recall@2 : 0.206    recall@3 : 0.2565    recall@4 : 0.2927    recall@5 : 0.3272    recall@10 : 0.4495    recall@20 : 0.588    recall@30 : 0.663    recall@50 : 0.7657    ndcg@1 : 0.183    ndcg@2 : 0.2176    ndcg@3 : 0.2339    ndcg@4 : 0.2463    ndcg@5 : 0.2585    ndcg@10 : 0.3011    ndcg@20 : 0.3406    ndcg@30 : 0.3608    ndcg@50 : 0.3854    precision@1 : 0.183    precision@2 : 0.1672    precision@3 : 0.1424    precision@4 : 0.1262    precision@5 : 0.1147    precision@10 : 0.0822    precision@20 : 0.0548    precision@30 : 0.043    precision@50 : 0.0311    map@1 : 0.183    map@2 : 0.1891    map@3 : 0.1927    map@4 : 0.1966    map@5 : 0.2012    map@10 : 0.2188    map@20 : 0.2311    map@30 : 0.2367    map@50 : 0.2419
+Sun 15 Mar 2026 22:27:17 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:17 INFO  epoch 4 training [time: 0.19s, train loss: 5.2980]
+Sun 15 Mar 2026 22:27:18 INFO  epoch 4 evaluating [time: 0.30s, valid_score: 0.301300]
+Sun 15 Mar 2026 22:27:18 INFO  valid result: 
+recall@1 : 0.1094    recall@2 : 0.2043    recall@3 : 0.2569    recall@4 : 0.2934    recall@5 : 0.3282    recall@10 : 0.4497    recall@20 : 0.5916    recall@30 : 0.6637    recall@50 : 0.7682    ndcg@1 : 0.1847    ndcg@2 : 0.2164    ndcg@3 : 0.2339    ndcg@4 : 0.2464    ndcg@5 : 0.2589    ndcg@10 : 0.3013    ndcg@20 : 0.3419    ndcg@30 : 0.3614    ndcg@50 : 0.3863    precision@1 : 0.1847    precision@2 : 0.1651    precision@3 : 0.1418    precision@4 : 0.1256    precision@5 : 0.1147    precision@10 : 0.0821    precision@20 : 0.0551    precision@30 : 0.043    precision@50 : 0.0311    map@1 : 0.1847    map@2 : 0.1883    map@3 : 0.1925    map@4 : 0.1966    map@5 : 0.2015    map@10 : 0.219    map@20 : 0.2318    map@30 : 0.2371    map@50 : 0.2423
+Sun 15 Mar 2026 22:27:18 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:18 INFO  epoch 5 training [time: 0.18s, train loss: 5.1386]
+Sun 15 Mar 2026 22:27:18 INFO  epoch 5 evaluating [time: 0.31s, valid_score: 0.301200]
+Sun 15 Mar 2026 22:27:18 INFO  valid result: 
+recall@1 : 0.1075    recall@2 : 0.2041    recall@3 : 0.2572    recall@4 : 0.2953    recall@5 : 0.3293    recall@10 : 0.4508    recall@20 : 0.5888    recall@30 : 0.6662    recall@50 : 0.7668    ndcg@1 : 0.1841    ndcg@2 : 0.2154    ndcg@3 : 0.2337    ndcg@4 : 0.2468    ndcg@5 : 0.2588    ndcg@10 : 0.3012    ndcg@20 : 0.3408    ndcg@30 : 0.3616    ndcg@50 : 0.3858    precision@1 : 0.1841    precision@2 : 0.1645    precision@3 : 0.1426    precision@4 : 0.1265    precision@5 : 0.1147    precision@10 : 0.0821    precision@20 : 0.0548    precision@30 : 0.0432    precision@50 : 0.0311    map@1 : 0.1841    map@2 : 0.1871    map@3 : 0.1918    map@4 : 0.1963    map@5 : 0.201    map@10 : 0.2184    map@20 : 0.2309    map@30 : 0.2367    map@50 : 0.2417
+Sun 15 Mar 2026 22:27:18 INFO  epoch 6 training [time: 0.16s, train loss: 4.9450]
+Sun 15 Mar 2026 22:27:19 INFO  epoch 6 evaluating [time: 0.32s, valid_score: 0.301500]
+Sun 15 Mar 2026 22:27:19 INFO  valid result: 
+recall@1 : 0.1063    recall@2 : 0.2042    recall@3 : 0.2551    recall@4 : 0.299    recall@5 : 0.331    recall@10 : 0.4529    recall@20 : 0.5873    recall@30 : 0.6725    recall@50 : 0.7668    ndcg@1 : 0.1824    ndcg@2 : 0.2148    ndcg@3 : 0.2318    ndcg@4 : 0.2477    ndcg@5 : 0.2588    ndcg@10 : 0.3015    ndcg@20 : 0.3403    ndcg@30 : 0.3627    ndcg@50 : 0.3855    precision@1 : 0.1824    precision@2 : 0.1645    precision@3 : 0.1414    precision@4 : 0.1275    precision@5 : 0.1147    precision@10 : 0.0824    precision@20 : 0.0549    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.1824    map@2 : 0.1862    map@3 : 0.1903    map@4 : 0.1963    map@5 : 0.2007    map@10 : 0.2182    map@20 : 0.2305    map@30 : 0.2365    map@50 : 0.2414
+Sun 15 Mar 2026 22:27:19 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:19 INFO  epoch 7 training [time: 0.22s, train loss: 4.7287]
+Sun 15 Mar 2026 22:27:19 INFO  epoch 7 evaluating [time: 0.31s, valid_score: 0.302300]
+Sun 15 Mar 2026 22:27:19 INFO  valid result: 
+recall@1 : 0.1071    recall@2 : 0.204    recall@3 : 0.2548    recall@4 : 0.2984    recall@5 : 0.3291    recall@10 : 0.4545    recall@20 : 0.5869    recall@30 : 0.6717    recall@50 : 0.7656    ndcg@1 : 0.1841    ndcg@2 : 0.2149    ndcg@3 : 0.2319    ndcg@4 : 0.2478    ndcg@5 : 0.2581    ndcg@10 : 0.3023    ndcg@20 : 0.3405    ndcg@30 : 0.3628    ndcg@50 : 0.3856    precision@1 : 0.1841    precision@2 : 0.1639    precision@3 : 0.141    precision@4 : 0.1274    precision@5 : 0.1138    precision@10 : 0.0827    precision@20 : 0.0549    precision@30 : 0.0433    precision@50 : 0.031    map@1 : 0.1841    map@2 : 0.1864    map@3 : 0.1904    map@4 : 0.1965    map@5 : 0.2005    map@10 : 0.2187    map@20 : 0.2309    map@30 : 0.2368    map@50 : 0.2417
+Sun 15 Mar 2026 22:27:19 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:19 INFO  epoch 8 training [time: 0.18s, train loss: 4.4991]
+Sun 15 Mar 2026 22:27:20 INFO  epoch 8 evaluating [time: 0.31s, valid_score: 0.302900]
+Sun 15 Mar 2026 22:27:20 INFO  valid result: 
+recall@1 : 0.1092    recall@2 : 0.204    recall@3 : 0.2556    recall@4 : 0.2987    recall@5 : 0.3293    recall@10 : 0.4535    recall@20 : 0.5861    recall@30 : 0.6724    recall@50 : 0.7659    ndcg@1 : 0.1859    ndcg@2 : 0.2156    ndcg@3 : 0.2332    ndcg@4 : 0.2488    ndcg@5 : 0.259    ndcg@10 : 0.3029    ndcg@20 : 0.3411    ndcg@30 : 0.3639    ndcg@50 : 0.3866    precision@1 : 0.1859    precision@2 : 0.1639    precision@3 : 0.1414    precision@4 : 0.1275    precision@5 : 0.1137    precision@10 : 0.0826    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.1859    map@2 : 0.1874    map@3 : 0.1918    map@4 : 0.1977    map@5 : 0.2016    map@10 : 0.2198    map@20 : 0.232    map@30 : 0.238    map@50 : 0.2429
+Sun 15 Mar 2026 22:27:20 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:20 INFO  epoch 9 training [time: 0.19s, train loss: 4.2888]
+Sun 15 Mar 2026 22:27:20 INFO  epoch 9 evaluating [time: 0.31s, valid_score: 0.302700]
+Sun 15 Mar 2026 22:27:20 INFO  valid result: 
+recall@1 : 0.1089    recall@2 : 0.204    recall@3 : 0.2556    recall@4 : 0.2993    recall@5 : 0.3286    recall@10 : 0.4536    recall@20 : 0.5858    recall@30 : 0.6716    recall@50 : 0.7663    ndcg@1 : 0.1853    ndcg@2 : 0.2155    ndcg@3 : 0.233    ndcg@4 : 0.2489    ndcg@5 : 0.2586    ndcg@10 : 0.3027    ndcg@20 : 0.341    ndcg@30 : 0.3636    ndcg@50 : 0.3866    precision@1 : 0.1853    precision@2 : 0.1639    precision@3 : 0.1414    precision@4 : 0.1277    precision@5 : 0.1135    precision@10 : 0.0825    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.1853    map@2 : 0.1873    map@3 : 0.1916    map@4 : 0.1977    map@5 : 0.2013    map@10 : 0.2196    map@20 : 0.2319    map@30 : 0.2379    map@50 : 0.2428
+Sun 15 Mar 2026 22:27:20 INFO  epoch 10 training [time: 0.18s, train loss: 4.0595]
+Sun 15 Mar 2026 22:27:21 INFO  epoch 10 evaluating [time: 0.32s, valid_score: 0.305200]
+Sun 15 Mar 2026 22:27:21 INFO  valid result: 
+recall@1 : 0.1154    recall@2 : 0.204    recall@3 : 0.2556    recall@4 : 0.2993    recall@5 : 0.3284    recall@10 : 0.4535    recall@20 : 0.586    recall@30 : 0.6718    recall@50 : 0.7663    ndcg@1 : 0.1925    ndcg@2 : 0.218    ndcg@3 : 0.2355    ndcg@4 : 0.2513    ndcg@5 : 0.2609    ndcg@10 : 0.3052    ndcg@20 : 0.3434    ndcg@30 : 0.3661    ndcg@50 : 0.389    precision@1 : 0.1925    precision@2 : 0.1639    precision@3 : 0.1414    precision@4 : 0.1275    precision@5 : 0.1133    precision@10 : 0.0826    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.1925    map@2 : 0.1906    map@3 : 0.1949    map@4 : 0.2009    map@5 : 0.2045    map@10 : 0.2228    map@20 : 0.2351    map@30 : 0.2411    map@50 : 0.246
+Sun 15 Mar 2026 22:27:21 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:21 INFO  epoch 11 training [time: 0.18s, train loss: 3.8943]
+Sun 15 Mar 2026 22:27:21 INFO  epoch 11 evaluating [time: 0.33s, valid_score: 0.306300]
+Sun 15 Mar 2026 22:27:21 INFO  valid result: 
+recall@1 : 0.119    recall@2 : 0.204    recall@3 : 0.2556    recall@4 : 0.2996    recall@5 : 0.3284    recall@10 : 0.4531    recall@20 : 0.5865    recall@30 : 0.6719    recall@50 : 0.7661    ndcg@1 : 0.1949    ndcg@2 : 0.2191    ndcg@3 : 0.2367    ndcg@4 : 0.2526    ndcg@5 : 0.2621    ndcg@10 : 0.3063    ndcg@20 : 0.3448    ndcg@30 : 0.3674    ndcg@50 : 0.3902    precision@1 : 0.1949    precision@2 : 0.1639    precision@3 : 0.1414    precision@4 : 0.1277    precision@5 : 0.1133    precision@10 : 0.0827    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.1949    map@2 : 0.1922    map@3 : 0.1967    map@4 : 0.2027    map@5 : 0.2062    map@10 : 0.2246    map@20 : 0.2369    map@30 : 0.2429    map@50 : 0.2478
+Sun 15 Mar 2026 22:27:21 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:21 INFO  epoch 12 training [time: 0.17s, train loss: 3.7437]
+Sun 15 Mar 2026 22:27:22 INFO  epoch 12 evaluating [time: 0.32s, valid_score: 0.307400]
+Sun 15 Mar 2026 22:27:22 INFO  valid result: 
+recall@1 : 0.1225    recall@2 : 0.2039    recall@3 : 0.2556    recall@4 : 0.2998    recall@5 : 0.3284    recall@10 : 0.452    recall@20 : 0.5861    recall@30 : 0.6717    recall@50 : 0.7658    ndcg@1 : 0.199    ndcg@2 : 0.2203    ndcg@3 : 0.2381    ndcg@4 : 0.2541    ndcg@5 : 0.2635    ndcg@10 : 0.3074    ndcg@20 : 0.346    ndcg@30 : 0.3687    ndcg@50 : 0.3915    precision@1 : 0.199    precision@2 : 0.1636    precision@3 : 0.1414    precision@4 : 0.1278    precision@5 : 0.1133    precision@10 : 0.0825    precision@20 : 0.0547    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.199    map@2 : 0.194    map@3 : 0.1985    map@4 : 0.2045    map@5 : 0.208    map@10 : 0.2263    map@20 : 0.2386    map@30 : 0.2447    map@50 : 0.2496
+Sun 15 Mar 2026 22:27:22 INFO  Saving current: saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:22 INFO  epoch 13 training [time: 0.14s, train loss: 3.6113]
+Sun 15 Mar 2026 22:27:22 INFO  epoch 13 evaluating [time: 0.33s, valid_score: 0.306700]
+Sun 15 Mar 2026 22:27:22 INFO  valid result: 
+recall@1 : 0.1225    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.299    recall@5 : 0.3273    recall@10 : 0.4507    recall@20 : 0.5859    recall@30 : 0.6712    recall@50 : 0.7659    ndcg@1 : 0.199    ndcg@2 : 0.2199    ndcg@3 : 0.2377    ndcg@4 : 0.2535    ndcg@5 : 0.2628    ndcg@10 : 0.3067    ndcg@20 : 0.3457    ndcg@30 : 0.3683    ndcg@50 : 0.3912    precision@1 : 0.199    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1274    precision@5 : 0.1129    precision@10 : 0.0824    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.199    map@2 : 0.1937    map@3 : 0.1982    map@4 : 0.2041    map@5 : 0.2075    map@10 : 0.2259    map@20 : 0.2383    map@30 : 0.2444    map@50 : 0.2493
+Sun 15 Mar 2026 22:27:22 INFO  epoch 14 training [time: 0.22s, train loss: 3.5403]
+Sun 15 Mar 2026 22:27:23 INFO  epoch 14 evaluating [time: 0.27s, valid_score: 0.306900]
+Sun 15 Mar 2026 22:27:23 INFO  valid result: 
+recall@1 : 0.1231    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.299    recall@5 : 0.3274    recall@10 : 0.4504    recall@20 : 0.5858    recall@30 : 0.6706    recall@50 : 0.7659    ndcg@1 : 0.1996    ndcg@2 : 0.2202    ndcg@3 : 0.2379    ndcg@4 : 0.2537    ndcg@5 : 0.2631    ndcg@10 : 0.3069    ndcg@20 : 0.3459    ndcg@30 : 0.3683    ndcg@50 : 0.3915    precision@1 : 0.1996    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1274    precision@5 : 0.113    precision@10 : 0.0823    precision@20 : 0.0547    precision@30 : 0.0433    precision@50 : 0.0311    map@1 : 0.1996    map@2 : 0.194    map@3 : 0.1984    map@4 : 0.2043    map@5 : 0.2078    map@10 : 0.2262    map@20 : 0.2386    map@30 : 0.2447    map@50 : 0.2496
+Sun 15 Mar 2026 22:27:23 INFO  epoch 15 training [time: 0.18s, train loss: 3.4805]
+Sun 15 Mar 2026 22:27:23 INFO  epoch 15 evaluating [time: 0.32s, valid_score: 0.307300]
+Sun 15 Mar 2026 22:27:23 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3274    recall@10 : 0.4509    recall@20 : 0.5858    recall@30 : 0.6701    recall@50 : 0.7656    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2633    ndcg@10 : 0.3073    ndcg@20 : 0.3461    ndcg@30 : 0.3684    ndcg@50 : 0.3916    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.113    precision@10 : 0.0824    precision@20 : 0.0548    precision@30 : 0.0433    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.2389    map@30 : 0.245    map@50 : 0.2499
+Sun 15 Mar 2026 22:27:23 INFO  epoch 16 training [time: 0.18s, train loss: 3.4043]
+Sun 15 Mar 2026 22:27:24 INFO  epoch 16 evaluating [time: 0.34s, valid_score: 0.307300]
+Sun 15 Mar 2026 22:27:24 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3275    recall@10 : 0.4509    recall@20 : 0.5858    recall@30 : 0.6706    recall@50 : 0.7658    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2634    ndcg@10 : 0.3073    ndcg@20 : 0.3461    ndcg@30 : 0.3686    ndcg@50 : 0.3916    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1131    precision@10 : 0.0824    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2266    map@20 : 0.2389    map@30 : 0.245    map@50 : 0.2499
+Sun 15 Mar 2026 22:27:24 INFO  epoch 17 training [time: 0.17s, train loss: 3.3679]
+Sun 15 Mar 2026 22:27:24 INFO  epoch 17 evaluating [time: 0.33s, valid_score: 0.307000]
+Sun 15 Mar 2026 22:27:24 INFO  valid result: 
+recall@1 : 0.1231    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3275    recall@10 : 0.4508    recall@20 : 0.5858    recall@30 : 0.6708    recall@50 : 0.7665    ndcg@1 : 0.1996    ndcg@2 : 0.2202    ndcg@3 : 0.2379    ndcg@4 : 0.2538    ndcg@5 : 0.2632    ndcg@10 : 0.307    ndcg@20 : 0.3459    ndcg@30 : 0.3684    ndcg@50 : 0.3916    precision@1 : 0.1996    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1131    precision@10 : 0.0824    precision@20 : 0.0548    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.1996    map@2 : 0.194    map@3 : 0.1984    map@4 : 0.2044    map@5 : 0.2079    map@10 : 0.2262    map@20 : 0.2387    map@30 : 0.2447    map@50 : 0.2497
+Sun 15 Mar 2026 22:27:24 INFO  epoch 18 training [time: 0.17s, train loss: 3.3400]
+Sun 15 Mar 2026 22:27:25 INFO  epoch 18 evaluating [time: 0.34s, valid_score: 0.307200]
+Sun 15 Mar 2026 22:27:25 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3275    recall@10 : 0.4508    recall@20 : 0.586    recall@30 : 0.6706    recall@50 : 0.7666    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2634    ndcg@10 : 0.3072    ndcg@20 : 0.3462    ndcg@30 : 0.3686    ndcg@50 : 0.3918    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1131    precision@10 : 0.0824    precision@20 : 0.0549    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.239    map@30 : 0.245    map@50 : 0.25
+Sun 15 Mar 2026 22:27:25 INFO  epoch 19 training [time: 0.16s, train loss: 3.2878]
+Sun 15 Mar 2026 22:27:25 INFO  epoch 19 evaluating [time: 0.32s, valid_score: 0.307200]
+Sun 15 Mar 2026 22:27:25 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3275    recall@10 : 0.4507    recall@20 : 0.5865    recall@30 : 0.6706    recall@50 : 0.7662    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2634    ndcg@10 : 0.3072    ndcg@20 : 0.3463    ndcg@30 : 0.3686    ndcg@50 : 0.3918    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1131    precision@10 : 0.0823    precision@20 : 0.0549    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.239    map@30 : 0.245    map@50 : 0.25
+Sun 15 Mar 2026 22:27:25 INFO  epoch 20 training [time: 0.18s, train loss: 3.3104]
+Sun 15 Mar 2026 22:27:26 INFO  epoch 20 evaluating [time: 0.33s, valid_score: 0.307200]
+Sun 15 Mar 2026 22:27:26 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3275    recall@10 : 0.4508    recall@20 : 0.586    recall@30 : 0.6703    recall@50 : 0.7655    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2634    ndcg@10 : 0.3072    ndcg@20 : 0.3463    ndcg@30 : 0.3685    ndcg@50 : 0.3917    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1131    precision@10 : 0.0824    precision@20 : 0.0549    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.239    map@30 : 0.245    map@50 : 0.25
+Sun 15 Mar 2026 22:27:26 INFO  epoch 21 training [time: 0.20s, train loss: 3.2983]
+Sun 15 Mar 2026 22:27:26 INFO  epoch 21 evaluating [time: 0.34s, valid_score: 0.307200]
+Sun 15 Mar 2026 22:27:26 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3275    recall@10 : 0.4508    recall@20 : 0.586    recall@30 : 0.67    recall@50 : 0.7653    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2634    ndcg@10 : 0.3072    ndcg@20 : 0.3463    ndcg@30 : 0.3684    ndcg@50 : 0.3916    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1131    precision@10 : 0.0823    precision@20 : 0.055    precision@30 : 0.0434    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.2391    map@30 : 0.245    map@50 : 0.25
+Sun 15 Mar 2026 22:27:26 INFO  epoch 22 training [time: 0.18s, train loss: 3.3110]
+Sun 15 Mar 2026 22:27:27 INFO  epoch 22 evaluating [time: 0.33s, valid_score: 0.307300]
+Sun 15 Mar 2026 22:27:27 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3276    recall@10 : 0.4509    recall@20 : 0.587    recall@30 : 0.6637    recall@50 : 0.7638    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2635    ndcg@10 : 0.3073    ndcg@20 : 0.3466    ndcg@30 : 0.3672    ndcg@50 : 0.3913    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1132    precision@10 : 0.0824    precision@20 : 0.0551    precision@30 : 0.0432    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.2392    map@30 : 0.2448    map@50 : 0.25
+Sun 15 Mar 2026 22:27:27 INFO  epoch 23 training [time: 0.20s, train loss: 3.3042]
+Sun 15 Mar 2026 22:27:27 INFO  epoch 23 evaluating [time: 0.32s, valid_score: 0.307300]
+Sun 15 Mar 2026 22:27:27 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2033    recall@3 : 0.255    recall@4 : 0.2991    recall@5 : 0.3276    recall@10 : 0.451    recall@20 : 0.5873    recall@30 : 0.6638    recall@50 : 0.7644    ndcg@1 : 0.2002    ndcg@2 : 0.2204    ndcg@3 : 0.2381    ndcg@4 : 0.254    ndcg@5 : 0.2635    ndcg@10 : 0.3073    ndcg@20 : 0.3467    ndcg@30 : 0.3673    ndcg@50 : 0.3915    precision@1 : 0.2002    precision@2 : 0.1633    precision@3 : 0.1412    precision@4 : 0.1275    precision@5 : 0.1132    precision@10 : 0.0824    precision@20 : 0.0552    precision@30 : 0.0432    precision@50 : 0.0311    map@1 : 0.2002    map@2 : 0.1943    map@3 : 0.1987    map@4 : 0.2047    map@5 : 0.2082    map@10 : 0.2265    map@20 : 0.2393    map@30 : 0.2449    map@50 : 0.25
+Sun 15 Mar 2026 22:27:27 INFO  Finished training, best eval result in epoch 12
+Sun 15 Mar 2026 22:27:27 INFO  Loading model structure and parameters from saved/LightGCN-Mar-15-2026_22-27-14.pth
+Sun 15 Mar 2026 22:27:28 INFO  best valid : OrderedDict([('recall@1', 0.1225), ('recall@2', 0.2039), ('recall@3', 0.2556), ('recall@4', 0.2998), ('recall@5', 0.3284), ('recall@10', 0.452), ('recall@20', 0.5861), ('recall@30', 0.6717), ('recall@50', 0.7658), ('ndcg@1', 0.199), ('ndcg@2', 0.2203), ('ndcg@3', 0.2381), ('ndcg@4', 0.2541), ('ndcg@5', 0.2635), ('ndcg@10', 0.3074), ('ndcg@20', 0.346), ('ndcg@30', 0.3687), ('ndcg@50', 0.3915), ('precision@1', 0.199), ('precision@2', 0.1636), ('precision@3', 0.1414), ('precision@4', 0.1278), ('precision@5', 0.1133), ('precision@10', 0.0825), ('precision@20', 0.0547), ('precision@30', 0.0434), ('precision@50', 0.0311), ('map@1', 0.199), ('map@2', 0.194), ('map@3', 0.1985), ('map@4', 0.2045), ('map@5', 0.208), ('map@10', 0.2263), ('map@20', 0.2386), ('map@30', 0.2447), ('map@50', 0.2496)])
+Sun 15 Mar 2026 22:27:28 INFO  test result: OrderedDict([('recall@1', 0.1403), ('recall@2', 0.2365), ('recall@3', 0.2822), ('recall@4', 0.3301), ('recall@5', 0.3633), ('recall@10', 0.4899), ('recall@20', 0.6048), ('recall@30', 0.7015), ('recall@50', 0.7926), ('ndcg@1', 0.2284), ('ndcg@2', 0.2562), ('ndcg@3', 0.2684), ('ndcg@4', 0.2845), ('ndcg@5', 0.2957), ('ndcg@10', 0.3387), ('ndcg@20', 0.372), ('ndcg@30', 0.3966), ('ndcg@50', 0.4182), ('precision@1', 0.2284), ('precision@2', 0.1896), ('precision@3', 0.1576), ('precision@4', 0.1405), ('precision@5', 0.1256), ('precision@10', 0.088), ('precision@20', 0.0568), ('precision@30', 0.0448), ('precision@50', 0.0314), ('map@1', 0.2284), ('map@2', 0.2288), ('map@3', 0.2289), ('map@4', 0.2348), ('map@5', 0.2389), ('map@10', 0.2558), ('map@20', 0.2664), ('map@30', 0.2729), ('map@50', 0.2776)])
+Sun 15 Mar 2026 22:27:28 INFO  training time: 12.4508s
+Sun 15 Mar 2026 22:27:28 INFO  result file: results/again/lightgcn_lightgcn_seed2023.json

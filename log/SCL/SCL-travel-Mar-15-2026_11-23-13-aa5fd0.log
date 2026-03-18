@@ -1,0 +1,396 @@
+Sun 15 Mar 2026 11:23:13 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2024
+state = INFO
+reproducibility = True
+data_path = ./travel
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1000
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 20
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'NDCG', 'Precision', 'MAP']
+topk = [1, 2, 3, 4, 5, 10, 20, 30, 50]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating'], 'user': ['user_id', 'post_num', 'follower', 'following', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = {'rating': '[0,inf)'}
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+embedding_size = 64
+n_layers = 3
+reg_weight = 0.0001
+ssl_temp = 0.1
+ssl_reg = 1e-07
+hyper_layers = 1
+alpha = 1
+proto_reg = 8e-08
+num_clusters = 10
+m_step = 1
+warm_up_step = 20
+user_feature_path = features/roberta_user.npy
+item_feature_path = features/roberta_item.npy
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cuda
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Sun 15 Mar 2026 11:23:13 INFO  travel
+The number of users: 2010
+Average actions of users: 18.721254355400696
+The number of items: 247
+Average actions of items: 152.890243902439
+The number of inters: 37611
+The sparsity of the dataset: 92.42431566862047%
+Remain Fields: ['user_id', 'item_id', 'rating', 'post_num', 'follower', 'following', 'timestamp']
+Sun 15 Mar 2026 11:23:13 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sun 15 Mar 2026 11:23:13 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Sun 15 Mar 2026 11:23:15 INFO  SCL(
+  (u_MLP): Linear(in_features=1024, out_features=64, bias=True)
+  (i_MLP): Linear(in_features=1024, out_features=64, bias=True)
+  (user_embedding): Embedding(2010, 64)
+  (item_embedding): Embedding(247, 64)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 275648
+Sun 15 Mar 2026 11:23:15 INFO  trainable parameters: 275648
+Sun 15 Mar 2026 11:23:16 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:16 INFO  epoch 0 training [time: 0.54s, train_loss1: 5.5429, train_loss2: 0.0193, train_loss3: 0.0116]
+Sun 15 Mar 2026 11:23:16 INFO  epoch 0 evaluating [time: 0.31s, valid_score: 0.032900]
+Sun 15 Mar 2026 11:23:16 INFO  valid result: 
+recall@1 : 0.0084    recall@2 : 0.0141    recall@3 : 0.0196    recall@4 : 0.025    recall@5 : 0.031    recall@10 : 0.0565    recall@20 : 0.0982    recall@30 : 0.1315    recall@50 : 0.2259    ndcg@1 : 0.0173    ndcg@2 : 0.0175    ndcg@3 : 0.0194    ndcg@4 : 0.0213    ndcg@5 : 0.0235    ndcg@10 : 0.0329    ndcg@20 : 0.0455    ndcg@30 : 0.0544    ndcg@50 : 0.0758    precision@1 : 0.0173    precision@2 : 0.014    precision@3 : 0.0131    precision@4 : 0.0124    precision@5 : 0.0122    precision@10 : 0.0119    precision@20 : 0.011    precision@30 : 0.0103    precision@50 : 0.0104    map@1 : 0.0173    map@2 : 0.0147    map@3 : 0.0149    map@4 : 0.0154    map@5 : 0.0161    map@10 : 0.0192    map@20 : 0.0221    map@30 : 0.0238    map@50 : 0.0268
+Sun 15 Mar 2026 11:23:16 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:16 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:16 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:17 INFO  epoch 1 training [time: 0.20s, train_loss1: 5.5426, train_loss2: 0.0148, train_loss3: 0.0115]
+Sun 15 Mar 2026 11:23:17 INFO  epoch 1 evaluating [time: 0.27s, valid_score: 0.033600]
+Sun 15 Mar 2026 11:23:17 INFO  valid result: 
+recall@1 : 0.0084    recall@2 : 0.0157    recall@3 : 0.0207    recall@4 : 0.0274    recall@5 : 0.0313    recall@10 : 0.0574    recall@20 : 0.0957    recall@30 : 0.1332    recall@50 : 0.2253    ndcg@1 : 0.0173    ndcg@2 : 0.0191    ndcg@3 : 0.0202    ndcg@4 : 0.0226    ndcg@5 : 0.0241    ndcg@10 : 0.0336    ndcg@20 : 0.0453    ndcg@30 : 0.0553    ndcg@50 : 0.0761    precision@1 : 0.0173    precision@2 : 0.0155    precision@3 : 0.0133    precision@4 : 0.013    precision@5 : 0.0125    precision@10 : 0.012    precision@20 : 0.0106    precision@30 : 0.0103    precision@50 : 0.0103    map@1 : 0.0173    map@2 : 0.0159    map@3 : 0.0156    map@4 : 0.0164    map@5 : 0.0166    map@10 : 0.0198    map@20 : 0.0225    map@30 : 0.0243    map@50 : 0.0273
+Sun 15 Mar 2026 11:23:17 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:17 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:17 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:17 INFO  epoch 2 training [time: 0.23s, train_loss1: 5.5421, train_loss2: 0.0128, train_loss3: 0.0113]
+Sun 15 Mar 2026 11:23:17 INFO  epoch 2 evaluating [time: 0.27s, valid_score: 0.035300]
+Sun 15 Mar 2026 11:23:17 INFO  valid result: 
+recall@1 : 0.012    recall@2 : 0.0164    recall@3 : 0.0228    recall@4 : 0.0274    recall@5 : 0.0337    recall@10 : 0.0564    recall@20 : 0.0983    recall@30 : 0.1397    recall@50 : 0.2324    ndcg@1 : 0.0215    ndcg@2 : 0.0212    ndcg@3 : 0.0228    ndcg@4 : 0.0245    ndcg@5 : 0.0269    ndcg@10 : 0.0353    ndcg@20 : 0.048    ndcg@30 : 0.0589    ndcg@50 : 0.0797    precision@1 : 0.0215    precision@2 : 0.0164    precision@3 : 0.0141    precision@4 : 0.0134    precision@5 : 0.0135    precision@10 : 0.0122    precision@20 : 0.0111    precision@30 : 0.0108    precision@50 : 0.0105    map@1 : 0.0215    map@2 : 0.0183    map@3 : 0.0183    map@4 : 0.0186    map@5 : 0.0193    map@10 : 0.022    map@20 : 0.025    map@30 : 0.027    map@50 : 0.0299
+Sun 15 Mar 2026 11:23:17 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:17 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:17 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:18 INFO  epoch 3 training [time: 0.22s, train_loss1: 5.5415, train_loss2: 0.0111, train_loss3: 0.0112]
+Sun 15 Mar 2026 11:23:18 INFO  epoch 3 evaluating [time: 0.26s, valid_score: 0.036200]
+Sun 15 Mar 2026 11:23:18 INFO  valid result: 
+recall@1 : 0.0112    recall@2 : 0.0189    recall@3 : 0.0234    recall@4 : 0.0293    recall@5 : 0.0337    recall@10 : 0.0573    recall@20 : 0.1054    recall@30 : 0.1441    recall@50 : 0.2368    ndcg@1 : 0.0221    ndcg@2 : 0.0229    ndcg@3 : 0.0235    ndcg@4 : 0.0257    ndcg@5 : 0.0272    ndcg@10 : 0.0362    ndcg@20 : 0.0504    ndcg@30 : 0.0607    ndcg@50 : 0.0815    precision@1 : 0.0221    precision@2 : 0.0182    precision@3 : 0.0149    precision@4 : 0.0143    precision@5 : 0.0135    precision@10 : 0.0126    precision@20 : 0.0118    precision@30 : 0.0111    precision@50 : 0.0107    map@1 : 0.0221    map@2 : 0.0194    map@3 : 0.0186    map@4 : 0.0192    map@5 : 0.0195    map@10 : 0.0223    map@20 : 0.0257    map@30 : 0.0275    map@50 : 0.0305
+Sun 15 Mar 2026 11:23:18 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:18 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:18 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:18 INFO  epoch 4 training [time: 0.22s, train_loss1: 5.5409, train_loss2: 0.0098, train_loss3: 0.0111]
+Sun 15 Mar 2026 11:23:18 INFO  epoch 4 evaluating [time: 0.25s, valid_score: 0.037700]
+Sun 15 Mar 2026 11:23:18 INFO  valid result: 
+recall@1 : 0.0126    recall@2 : 0.0197    recall@3 : 0.0259    recall@4 : 0.0303    recall@5 : 0.0355    recall@10 : 0.0588    recall@20 : 0.1096    recall@30 : 0.1479    recall@50 : 0.2395    ndcg@1 : 0.0244    ndcg@2 : 0.0241    ndcg@3 : 0.0261    ndcg@4 : 0.0273    ndcg@5 : 0.0291    ndcg@10 : 0.0377    ndcg@20 : 0.053    ndcg@30 : 0.0631    ndcg@50 : 0.0837    precision@1 : 0.0244    precision@2 : 0.0185    precision@3 : 0.0169    precision@4 : 0.015    precision@5 : 0.0142    precision@10 : 0.0126    precision@20 : 0.0123    precision@30 : 0.0113    precision@50 : 0.0108    map@1 : 0.0244    map@2 : 0.0207    map@3 : 0.0206    map@4 : 0.0206    map@5 : 0.021    map@10 : 0.0238    map@20 : 0.0274    map@30 : 0.0293    map@50 : 0.0322
+Sun 15 Mar 2026 11:23:18 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:18 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:18 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:19 INFO  epoch 5 training [time: 0.37s, train_loss1: 5.5401, train_loss2: 0.0087, train_loss3: 0.0110]
+Sun 15 Mar 2026 11:23:19 INFO  epoch 5 evaluating [time: 0.35s, valid_score: 0.039700]
+Sun 15 Mar 2026 11:23:19 INFO  valid result: 
+recall@1 : 0.0135    recall@2 : 0.0223    recall@3 : 0.0289    recall@4 : 0.0328    recall@5 : 0.0379    recall@10 : 0.061    recall@20 : 0.1148    recall@30 : 0.1509    recall@50 : 0.2444    ndcg@1 : 0.0256    ndcg@2 : 0.0267    ndcg@3 : 0.0285    ndcg@4 : 0.0295    ndcg@5 : 0.0313    ndcg@10 : 0.0397    ndcg@20 : 0.0561    ndcg@30 : 0.0655    ndcg@50 : 0.0867    precision@1 : 0.0256    precision@2 : 0.0209    precision@3 : 0.0185    precision@4 : 0.0161    precision@5 : 0.0151    precision@10 : 0.0131    precision@20 : 0.0129    precision@30 : 0.0116    precision@50 : 0.0112    map@1 : 0.0256    map@2 : 0.0228    map@3 : 0.0225    map@4 : 0.0224    map@5 : 0.0228    map@10 : 0.0253    map@20 : 0.0293    map@30 : 0.0311    map@50 : 0.0341
+Sun 15 Mar 2026 11:23:19 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:19 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:19 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:19 INFO  epoch 6 training [time: 0.17s, train_loss1: 5.5392, train_loss2: 0.0078, train_loss3: 0.0109]
+Sun 15 Mar 2026 11:23:19 INFO  epoch 6 evaluating [time: 0.16s, valid_score: 0.043500]
+Sun 15 Mar 2026 11:23:19 INFO  valid result: 
+recall@1 : 0.0155    recall@2 : 0.0235    recall@3 : 0.0296    recall@4 : 0.0362    recall@5 : 0.0403    recall@10 : 0.0669    recall@20 : 0.1182    recall@30 : 0.1569    recall@50 : 0.2481    ndcg@1 : 0.0292    ndcg@2 : 0.0291    ndcg@3 : 0.0305    ndcg@4 : 0.0324    ndcg@5 : 0.0338    ndcg@10 : 0.0435    ndcg@20 : 0.0589    ndcg@30 : 0.0692    ndcg@50 : 0.09    precision@1 : 0.0292    precision@2 : 0.0226    precision@3 : 0.0199    precision@4 : 0.0174    precision@5 : 0.0162    precision@10 : 0.0146    precision@20 : 0.0132    precision@30 : 0.0121    precision@50 : 0.0114    map@1 : 0.0292    map@2 : 0.0249    map@3 : 0.0242    map@4 : 0.0246    map@5 : 0.0248    map@10 : 0.0276    map@20 : 0.0315    map@30 : 0.0334    map@50 : 0.0364
+Sun 15 Mar 2026 11:23:19 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:19 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:19 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:20 INFO  epoch 7 training [time: 0.21s, train_loss1: 5.5381, train_loss2: 0.0071, train_loss3: 0.0108]
+Sun 15 Mar 2026 11:23:20 INFO  epoch 7 evaluating [time: 0.27s, valid_score: 0.047600]
+Sun 15 Mar 2026 11:23:20 INFO  valid result: 
+recall@1 : 0.0173    recall@2 : 0.0254    recall@3 : 0.0337    recall@4 : 0.0387    recall@5 : 0.0418    recall@10 : 0.0731    recall@20 : 0.1223    recall@30 : 0.1652    recall@50 : 0.2561    ndcg@1 : 0.0316    ndcg@2 : 0.0315    ndcg@3 : 0.0338    ndcg@4 : 0.0354    ndcg@5 : 0.0367    ndcg@10 : 0.0476    ndcg@20 : 0.0627    ndcg@30 : 0.074    ndcg@50 : 0.0947    precision@1 : 0.0316    precision@2 : 0.0247    precision@3 : 0.0219    precision@4 : 0.0195    precision@5 : 0.0184    precision@10 : 0.0158    precision@20 : 0.0139    precision@30 : 0.0128    precision@50 : 0.0118    map@1 : 0.0316    map@2 : 0.0271    map@3 : 0.0269    map@4 : 0.0269    map@5 : 0.0269    map@10 : 0.0305    map@20 : 0.0342    map@30 : 0.0363    map@50 : 0.0395
+Sun 15 Mar 2026 11:23:20 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:20 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:20 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:20 INFO  epoch 8 training [time: 0.20s, train_loss1: 5.5368, train_loss2: 0.0065, train_loss3: 0.0108]
+Sun 15 Mar 2026 11:23:20 INFO  epoch 8 evaluating [time: 0.27s, valid_score: 0.052200]
+Sun 15 Mar 2026 11:23:20 INFO  valid result: 
+recall@1 : 0.0168    recall@2 : 0.0281    recall@3 : 0.0363    recall@4 : 0.0417    recall@5 : 0.0477    recall@10 : 0.0816    recall@20 : 0.128    recall@30 : 0.1758    recall@50 : 0.2687    ndcg@1 : 0.031    ndcg@2 : 0.0341    ndcg@3 : 0.0363    ndcg@4 : 0.038    ndcg@5 : 0.0401    ndcg@10 : 0.0522    ndcg@20 : 0.0665    ndcg@30 : 0.0789    ndcg@50 : 0.1    precision@1 : 0.031    precision@2 : 0.0277    precision@3 : 0.0244    precision@4 : 0.0219    precision@5 : 0.0205    precision@10 : 0.0177    precision@20 : 0.0147    precision@30 : 0.0135    precision@50 : 0.0124    map@1 : 0.031    map@2 : 0.0288    map@3 : 0.0282    map@4 : 0.0283    map@5 : 0.0289    map@10 : 0.0328    map@20 : 0.0364    map@30 : 0.0387    map@50 : 0.0419
+Sun 15 Mar 2026 11:23:20 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:20 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:20 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:21 INFO  epoch 9 training [time: 0.23s, train_loss1: 5.5353, train_loss2: 0.0061, train_loss3: 0.0107]
+Sun 15 Mar 2026 11:23:21 INFO  epoch 9 evaluating [time: 0.26s, valid_score: 0.056500]
+Sun 15 Mar 2026 11:23:21 INFO  valid result: 
+recall@1 : 0.0171    recall@2 : 0.0313    recall@3 : 0.0399    recall@4 : 0.0469    recall@5 : 0.0566    recall@10 : 0.087    recall@20 : 0.137    recall@30 : 0.1878    recall@50 : 0.2837    ndcg@1 : 0.0328    ndcg@2 : 0.0379    ndcg@3 : 0.04    ndcg@4 : 0.0421    ndcg@5 : 0.0457    ndcg@10 : 0.0565    ndcg@20 : 0.072    ndcg@30 : 0.0853    ndcg@50 : 0.1071    precision@1 : 0.0328    precision@2 : 0.0319    precision@3 : 0.028    precision@4 : 0.0249    precision@5 : 0.0242    precision@10 : 0.0189    precision@20 : 0.0158    precision@30 : 0.0145    precision@50 : 0.0131    map@1 : 0.0328    map@2 : 0.0314    map@3 : 0.0306    map@4 : 0.0308    map@5 : 0.032    map@10 : 0.0356    map@20 : 0.0396    map@30 : 0.0422    map@50 : 0.0455
+Sun 15 Mar 2026 11:23:21 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:21 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:21 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:21 INFO  epoch 10 training [time: 0.18s, train_loss1: 5.5333, train_loss2: 0.0058, train_loss3: 0.0106]
+Sun 15 Mar 2026 11:23:21 INFO  epoch 10 evaluating [time: 0.28s, valid_score: 0.064600]
+Sun 15 Mar 2026 11:23:21 INFO  valid result: 
+recall@1 : 0.0196    recall@2 : 0.0349    recall@3 : 0.0436    recall@4 : 0.0541    recall@5 : 0.0667    recall@10 : 0.0987    recall@20 : 0.1535    recall@30 : 0.2046    recall@50 : 0.3029    ndcg@1 : 0.0417    ndcg@2 : 0.0444    ndcg@3 : 0.0452    ndcg@4 : 0.0486    ndcg@5 : 0.0531    ndcg@10 : 0.0646    ndcg@20 : 0.0812    ndcg@30 : 0.0944    ndcg@50 : 0.1169    precision@1 : 0.0417    precision@2 : 0.0369    precision@3 : 0.0314    precision@4 : 0.0286    precision@5 : 0.0277    precision@10 : 0.0216    precision@20 : 0.0175    precision@30 : 0.0155    precision@50 : 0.0139    map@1 : 0.0417    map@2 : 0.0369    map@3 : 0.0347    map@4 : 0.0355    map@5 : 0.037    map@10 : 0.0407    map@20 : 0.045    map@30 : 0.0476    map@50 : 0.0511
+Sun 15 Mar 2026 11:23:21 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:21 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:21 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:22 INFO  epoch 11 training [time: 0.21s, train_loss1: 5.5312, train_loss2: 0.0057, train_loss3: 0.0106]
+Sun 15 Mar 2026 11:23:22 INFO  epoch 11 evaluating [time: 0.28s, valid_score: 0.074000]
+Sun 15 Mar 2026 11:23:22 INFO  valid result: 
+recall@1 : 0.0242    recall@2 : 0.039    recall@3 : 0.0486    recall@4 : 0.0628    recall@5 : 0.0756    recall@10 : 0.1123    recall@20 : 0.1696    recall@30 : 0.2244    recall@50 : 0.3205    ndcg@1 : 0.0477    ndcg@2 : 0.0498    ndcg@3 : 0.0512    ndcg@4 : 0.0565    ndcg@5 : 0.061    ndcg@10 : 0.074    ndcg@20 : 0.0914    ndcg@30 : 0.1058    ndcg@50 : 0.1278    precision@1 : 0.0477    precision@2 : 0.0408    precision@3 : 0.0354    precision@4 : 0.0338    precision@5 : 0.0319    precision@10 : 0.0247    precision@20 : 0.0192    precision@30 : 0.0172    precision@50 : 0.0148    map@1 : 0.0477    map@2 : 0.042    map@3 : 0.0399    map@4 : 0.0417    map@5 : 0.0431    map@10 : 0.0475    map@20 : 0.0521    map@30 : 0.055    map@50 : 0.0585
+Sun 15 Mar 2026 11:23:22 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:22 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:22 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:22 INFO  epoch 12 training [time: 0.22s, train_loss1: 5.5284, train_loss2: 0.0057, train_loss3: 0.0105]
+Sun 15 Mar 2026 11:23:22 INFO  epoch 12 evaluating [time: 0.28s, valid_score: 0.085500]
+Sun 15 Mar 2026 11:23:22 INFO  valid result: 
+recall@1 : 0.0268    recall@2 : 0.048    recall@3 : 0.0623    recall@4 : 0.0737    recall@5 : 0.0837    recall@10 : 0.1271    recall@20 : 0.1876    recall@30 : 0.246    recall@50 : 0.3404    ndcg@1 : 0.0542    ndcg@2 : 0.0584    ndcg@3 : 0.0627    ndcg@4 : 0.0667    ndcg@5 : 0.0702    ndcg@10 : 0.0855    ndcg@20 : 0.1038    ndcg@30 : 0.1192    ndcg@50 : 0.1411    precision@1 : 0.0542    precision@2 : 0.048    precision@3 : 0.0441    precision@4 : 0.0404    precision@5 : 0.0374    precision@10 : 0.0287    precision@20 : 0.0214    precision@30 : 0.019    precision@50 : 0.016    map@1 : 0.0542    map@2 : 0.0492    map@3 : 0.0486    map@4 : 0.0494    map@5 : 0.0503    map@10 : 0.0557    map@20 : 0.0609    map@30 : 0.0641    map@50 : 0.0677
+Sun 15 Mar 2026 11:23:22 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:22 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:22 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:23 INFO  epoch 13 training [time: 0.20s, train_loss1: 5.5247, train_loss2: 0.0059, train_loss3: 0.0105]
+Sun 15 Mar 2026 11:23:23 INFO  epoch 13 evaluating [time: 0.26s, valid_score: 0.100500]
+Sun 15 Mar 2026 11:23:23 INFO  valid result: 
+recall@1 : 0.0324    recall@2 : 0.0579    recall@3 : 0.0713    recall@4 : 0.0861    recall@5 : 0.0998    recall@10 : 0.1475    recall@20 : 0.2156    recall@30 : 0.2747    recall@50 : 0.3726    ndcg@1 : 0.065    ndcg@2 : 0.0708    ndcg@3 : 0.0742    ndcg@4 : 0.0794    ndcg@5 : 0.0841    ndcg@10 : 0.1005    ndcg@20 : 0.1212    ndcg@30 : 0.1365    ndcg@50 : 0.1594    precision@1 : 0.065    precision@2 : 0.059    precision@3 : 0.0524    precision@4 : 0.0487    precision@5 : 0.0453    precision@10 : 0.0333    precision@20 : 0.0249    precision@30 : 0.0211    precision@50 : 0.0175    map@1 : 0.065    map@2 : 0.0596    map@3 : 0.0578    map@4 : 0.0594    map@5 : 0.0609    map@10 : 0.0666    map@20 : 0.0725    map@30 : 0.0758    map@50 : 0.0797
+Sun 15 Mar 2026 11:23:23 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:23 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:23 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:23 INFO  epoch 14 training [time: 0.22s, train_loss1: 5.5203, train_loss2: 0.0065, train_loss3: 0.0105]
+Sun 15 Mar 2026 11:23:23 INFO  epoch 14 evaluating [time: 0.26s, valid_score: 0.120500]
+Sun 15 Mar 2026 11:23:23 INFO  valid result: 
+recall@1 : 0.0398    recall@2 : 0.0682    recall@3 : 0.0871    recall@4 : 0.1016    recall@5 : 0.1175    recall@10 : 0.1758    recall@20 : 0.2518    recall@30 : 0.3103    recall@50 : 0.4108    ndcg@1 : 0.0805    ndcg@2 : 0.0862    ndcg@3 : 0.0908    ndcg@4 : 0.0948    ndcg@5 : 0.1002    ndcg@10 : 0.1205    ndcg@20 : 0.1432    ndcg@30 : 0.1588    ndcg@50 : 0.1818    precision@1 : 0.0805    precision@2 : 0.0721    precision@3 : 0.0644    precision@4 : 0.0574    precision@5 : 0.0533    precision@10 : 0.0402    precision@20 : 0.029    precision@30 : 0.0243    precision@50 : 0.0191    map@1 : 0.0805    map@2 : 0.073    map@3 : 0.0709    map@4 : 0.0715    map@5 : 0.0735    map@10 : 0.081    map@20 : 0.0875    map@30 : 0.0912    map@50 : 0.0952
+Sun 15 Mar 2026 11:23:23 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:23 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:23 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:24 INFO  epoch 15 training [time: 0.21s, train_loss1: 5.5140, train_loss2: 0.0076, train_loss3: 0.0104]
+Sun 15 Mar 2026 11:23:24 INFO  epoch 15 evaluating [time: 0.26s, valid_score: 0.143000]
+Sun 15 Mar 2026 11:23:24 INFO  valid result: 
+recall@1 : 0.0473    recall@2 : 0.0821    recall@3 : 0.1029    recall@4 : 0.1227    recall@5 : 0.1425    recall@10 : 0.2073    recall@20 : 0.2951    recall@30 : 0.3569    recall@50 : 0.4591    ndcg@1 : 0.0977    ndcg@2 : 0.1039    ndcg@3 : 0.1074    ndcg@4 : 0.1139    ndcg@5 : 0.1205    ndcg@10 : 0.143    ndcg@20 : 0.1694    ndcg@30 : 0.1858    ndcg@50 : 0.2093    precision@1 : 0.0977    precision@2 : 0.0873    precision@3 : 0.0751    precision@4 : 0.0687    precision@5 : 0.0636    precision@10 : 0.047    precision@20 : 0.0341    precision@30 : 0.0278    precision@50 : 0.0213    map@1 : 0.0977    map@2 : 0.0886    map@3 : 0.0853    map@4 : 0.0871    map@5 : 0.0892    map@10 : 0.0978    map@20 : 0.1058    map@30 : 0.1099    map@50 : 0.114
+Sun 15 Mar 2026 11:23:24 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:24 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:24 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:24 INFO  epoch 16 training [time: 0.21s, train_loss1: 5.5049, train_loss2: 0.0094, train_loss3: 0.0104]
+Sun 15 Mar 2026 11:23:24 INFO  epoch 16 evaluating [time: 0.26s, valid_score: 0.171900]
+Sun 15 Mar 2026 11:23:24 INFO  valid result: 
+recall@1 : 0.0564    recall@2 : 0.0932    recall@3 : 0.1265    recall@4 : 0.1519    recall@5 : 0.1743    recall@10 : 0.2545    recall@20 : 0.3636    recall@30 : 0.4237    recall@50 : 0.5186    ndcg@1 : 0.1144    ndcg@2 : 0.1188    ndcg@3 : 0.1283    ndcg@4 : 0.1367    ndcg@5 : 0.1446    ndcg@10 : 0.1719    ndcg@20 : 0.205    ndcg@30 : 0.2209    ndcg@50 : 0.2431    precision@1 : 0.1144    precision@2 : 0.0983    precision@3 : 0.0898    precision@4 : 0.0819    precision@5 : 0.0766    precision@10 : 0.0561    precision@20 : 0.0414    precision@30 : 0.0325    precision@50 : 0.0242    map@1 : 0.1144    map@2 : 0.1022    map@3 : 0.1023    map@4 : 0.1047    map@5 : 0.1077    map@10 : 0.1182    map@20 : 0.1289    map@30 : 0.1328    map@50 : 0.1371
+Sun 15 Mar 2026 11:23:24 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:24 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:24 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:25 INFO  epoch 17 training [time: 0.21s, train_loss1: 5.4909, train_loss2: 0.0122, train_loss3: 0.0104]
+Sun 15 Mar 2026 11:23:25 INFO  epoch 17 evaluating [time: 0.27s, valid_score: 0.207700]
+Sun 15 Mar 2026 11:23:25 INFO  valid result: 
+recall@1 : 0.0687    recall@2 : 0.1085    recall@3 : 0.1508    recall@4 : 0.1804    recall@5 : 0.2115    recall@10 : 0.3115    recall@20 : 0.4365    recall@30 : 0.5006    recall@50 : 0.5915    ndcg@1 : 0.1353    ndcg@2 : 0.1388    ndcg@3 : 0.1511    ndcg@4 : 0.1614    ndcg@5 : 0.1726    ndcg@10 : 0.2077    ndcg@20 : 0.2449    ndcg@30 : 0.2619    ndcg@50 : 0.2833    precision@1 : 0.1353    precision@2 : 0.1138    precision@3 : 0.1045    precision@4 : 0.0961    precision@5 : 0.0902    precision@10 : 0.0673    precision@20 : 0.0483    precision@30 : 0.0376    precision@50 : 0.0271    map@1 : 0.1353    map@2 : 0.1207    map@3 : 0.1215    map@4 : 0.1247    map@5 : 0.1293    map@10 : 0.1437    map@20 : 0.1559    map@30 : 0.1604    map@50 : 0.1649
+Sun 15 Mar 2026 11:23:25 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:25 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:25 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:25 INFO  epoch 18 training [time: 0.23s, train_loss1: 5.4684, train_loss2: 0.0167, train_loss3: 0.0103]
+Sun 15 Mar 2026 11:23:26 INFO  epoch 18 evaluating [time: 0.37s, valid_score: 0.248500]
+Sun 15 Mar 2026 11:23:26 INFO  valid result: 
+recall@1 : 0.0777    recall@2 : 0.1352    recall@3 : 0.1852    recall@4 : 0.2298    recall@5 : 0.2636    recall@10 : 0.3827    recall@20 : 0.5095    recall@30 : 0.5805    recall@50 : 0.6661    ndcg@1 : 0.1484    ndcg@2 : 0.1596    ndcg@3 : 0.1766    ndcg@4 : 0.1935    ndcg@5 : 0.2058    ndcg@10 : 0.2485    ndcg@20 : 0.287    ndcg@30 : 0.3058    ndcg@50 : 0.3258    precision@1 : 0.1484    precision@2 : 0.1278    precision@3 : 0.1186    precision@4 : 0.1114    precision@5 : 0.1033    precision@10 : 0.0784    precision@20 : 0.0546    precision@30 : 0.0422    precision@50 : 0.0296    map@1 : 0.1484    map@2 : 0.1383    map@3 : 0.1419    map@4 : 0.1491    map@5 : 0.1544    map@10 : 0.1719    map@20 : 0.1852    map@30 : 0.1906    map@50 : 0.195
+Sun 15 Mar 2026 11:23:26 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:26 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:26 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:26 INFO  epoch 19 training [time: 0.29s, train_loss1: 5.4245, train_loss2: 0.0242, train_loss3: 0.0103]
+Sun 15 Mar 2026 11:23:26 INFO  epoch 19 evaluating [time: 0.14s, valid_score: 0.292000]
+Sun 15 Mar 2026 11:23:26 INFO  valid result: 
+recall@1 : 0.1058    recall@2 : 0.1728    recall@3 : 0.2289    recall@4 : 0.2685    recall@5 : 0.3081    recall@10 : 0.4456    recall@20 : 0.5776    recall@30 : 0.6364    recall@50 : 0.719    ndcg@1 : 0.1758    ndcg@2 : 0.1934    ndcg@3 : 0.2126    ndcg@4 : 0.227    ndcg@5 : 0.242    ndcg@10 : 0.292    ndcg@20 : 0.3329    ndcg@30 : 0.3492    ndcg@50 : 0.3687    precision@1 : 0.1758    precision@2 : 0.1475    precision@3 : 0.1317    precision@4 : 0.1186    precision@5 : 0.1104    precision@10 : 0.085    precision@20 : 0.0591    precision@30 : 0.0449    precision@50 : 0.0311    map@1 : 0.1758    map@2 : 0.1695    map@3 : 0.1746    map@4 : 0.1804    map@5 : 0.1868    map@10 : 0.2082    map@20 : 0.2229    map@30 : 0.228    map@50 : 0.2323
+Sun 15 Mar 2026 11:23:26 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:26 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:26 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:26 INFO  epoch 20 training [time: 0.21s, train_loss1: 5.3292, train_loss2: 0.0319, train_loss3: 0.0103, train_loss4: 0.0031]
+Sun 15 Mar 2026 11:23:26 INFO  epoch 20 evaluating [time: 0.20s, valid_score: 0.312900]
+Sun 15 Mar 2026 11:23:26 INFO  valid result: 
+recall@1 : 0.123    recall@2 : 0.1992    recall@3 : 0.2601    recall@4 : 0.3081    recall@5 : 0.3399    recall@10 : 0.4676    recall@20 : 0.6136    recall@30 : 0.6749    recall@50 : 0.7468    ndcg@1 : 0.1901    ndcg@2 : 0.2148    ndcg@3 : 0.2376    ndcg@4 : 0.2559    ndcg@5 : 0.2677    ndcg@10 : 0.3129    ndcg@20 : 0.3575    ndcg@30 : 0.3744    ndcg@50 : 0.392    precision@1 : 0.1901    precision@2 : 0.1594    precision@3 : 0.1418    precision@4 : 0.1287    precision@5 : 0.1164    precision@10 : 0.0848    precision@20 : 0.0599    precision@30 : 0.0456    precision@50 : 0.0313    map@1 : 0.1901    map@2 : 0.1907    map@3 : 0.1985    map@4 : 0.2063    map@5 : 0.2115    map@10 : 0.2299    map@20 : 0.2452    map@30 : 0.2502    map@50 : 0.2544
+Sun 15 Mar 2026 11:23:26 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:26 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:26 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:27 INFO  epoch 21 training [time: 0.21s, train_loss1: 5.1448, train_loss2: 0.0355, train_loss3: 0.0103, train_loss4: 0.0037]
+Sun 15 Mar 2026 11:23:27 INFO  epoch 21 evaluating [time: 0.28s, valid_score: 0.322000]
+Sun 15 Mar 2026 11:23:27 INFO  valid result: 
+recall@1 : 0.1271    recall@2 : 0.2145    recall@3 : 0.276    recall@4 : 0.3238    recall@5 : 0.3577    recall@10 : 0.4778    recall@20 : 0.6236    recall@30 : 0.68    recall@50 : 0.7631    ndcg@1 : 0.1955    ndcg@2 : 0.2257    ndcg@3 : 0.2491    ndcg@4 : 0.2674    ndcg@5 : 0.2799    ndcg@10 : 0.322    ndcg@20 : 0.366    ndcg@30 : 0.3817    ndcg@50 : 0.4019    precision@1 : 0.1955    precision@2 : 0.166    precision@3 : 0.1468    precision@4 : 0.1329    precision@5 : 0.12    precision@10 : 0.0843    precision@20 : 0.0594    precision@30 : 0.0449    precision@50 : 0.0314    map@1 : 0.1955    map@2 : 0.2002    map@3 : 0.2085    map@4 : 0.2164    map@5 : 0.2215    map@10 : 0.2385    map@20 : 0.2532    map@30 : 0.2579    map@50 : 0.2625
+Sun 15 Mar 2026 11:23:27 INFO  Saving current: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:27 INFO  Saving current best: saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:27 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:27 INFO  epoch 22 training [time: 0.22s, train_loss1: 4.8609, train_loss2: 0.0367, train_loss3: 0.0104, train_loss4: 0.0047]
+Sun 15 Mar 2026 11:23:27 INFO  epoch 22 evaluating [time: 0.28s, valid_score: 0.319900]
+Sun 15 Mar 2026 11:23:27 INFO  valid result: 
+recall@1 : 0.1217    recall@2 : 0.2145    recall@3 : 0.2733    recall@4 : 0.3161    recall@5 : 0.3506    recall@10 : 0.4812    recall@20 : 0.6101    recall@30 : 0.6816    recall@50 : 0.7622    ndcg@1 : 0.1907    ndcg@2 : 0.2233    ndcg@3 : 0.2456    ndcg@4 : 0.2617    ndcg@5 : 0.2743    ndcg@10 : 0.3199    ndcg@20 : 0.3589    ndcg@30 : 0.3783    ndcg@50 : 0.3979    precision@1 : 0.1907    precision@2 : 0.1654    precision@3 : 0.1458    precision@4 : 0.1305    precision@5 : 0.1181    precision@10 : 0.0847    precision@20 : 0.0579    precision@30 : 0.0448    precision@50 : 0.0313    map@1 : 0.1907    map@2 : 0.1977    map@3 : 0.2051    map@4 : 0.2116    map@5 : 0.2166    map@10 : 0.2351    map@20 : 0.248    map@30 : 0.2535    map@50 : 0.258
+Sun 15 Mar 2026 11:23:27 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:28 INFO  epoch 23 training [time: 0.23s, train_loss1: 4.5176, train_loss2: 0.0372, train_loss3: 0.0104, train_loss4: 0.0055]
+Sun 15 Mar 2026 11:23:28 INFO  epoch 23 evaluating [time: 0.28s, valid_score: 0.318900]
+Sun 15 Mar 2026 11:23:28 INFO  valid result: 
+recall@1 : 0.1236    recall@2 : 0.212    recall@3 : 0.271    recall@4 : 0.3122    recall@5 : 0.351    recall@10 : 0.479    recall@20 : 0.6094    recall@30 : 0.6822    recall@50 : 0.7678    ndcg@1 : 0.1919    ndcg@2 : 0.2227    ndcg@3 : 0.2442    ndcg@4 : 0.2596    ndcg@5 : 0.2742    ndcg@10 : 0.3189    ndcg@20 : 0.3582    ndcg@30 : 0.3779    ndcg@50 : 0.3985    precision@1 : 0.1919    precision@2 : 0.1648    precision@3 : 0.1436    precision@4 : 0.1281    precision@5 : 0.1178    precision@10 : 0.0842    precision@20 : 0.0575    precision@30 : 0.0447    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1977    map@3 : 0.2045    map@4 : 0.2106    map@5 : 0.2167    map@10 : 0.2347    map@20 : 0.2475    map@30 : 0.2531    map@50 : 0.2577
+Sun 15 Mar 2026 11:23:28 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:28 INFO  epoch 24 training [time: 0.22s, train_loss1: 4.1614, train_loss2: 0.0375, train_loss3: 0.0105, train_loss4: 0.0062]
+Sun 15 Mar 2026 11:23:28 INFO  epoch 24 evaluating [time: 0.28s, valid_score: 0.317700]
+Sun 15 Mar 2026 11:23:28 INFO  valid result: 
+recall@1 : 0.1237    recall@2 : 0.2065    recall@3 : 0.2709    recall@4 : 0.3152    recall@5 : 0.3519    recall@10 : 0.4771    recall@20 : 0.6054    recall@30 : 0.6792    recall@50 : 0.7677    ndcg@1 : 0.1925    ndcg@2 : 0.219    ndcg@3 : 0.2435    ndcg@4 : 0.2602    ndcg@5 : 0.274    ndcg@10 : 0.3177    ndcg@20 : 0.3563    ndcg@30 : 0.3764    ndcg@50 : 0.3977    precision@1 : 0.1925    precision@2 : 0.1615    precision@3 : 0.1436    precision@4 : 0.1289    precision@5 : 0.118    precision@10 : 0.0838    precision@20 : 0.0569    precision@30 : 0.0444    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.1949    map@3 : 0.2037    map@4 : 0.2105    map@5 : 0.2162    map@10 : 0.2336    map@20 : 0.2463    map@30 : 0.252    map@50 : 0.2567
+Sun 15 Mar 2026 11:23:28 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:29 INFO  epoch 25 training [time: 0.23s, train_loss1: 3.8571, train_loss2: 0.0377, train_loss3: 0.0106, train_loss4: 0.0068]
+Sun 15 Mar 2026 11:23:29 INFO  epoch 25 evaluating [time: 0.28s, valid_score: 0.316600]
+Sun 15 Mar 2026 11:23:29 INFO  valid result: 
+recall@1 : 0.1225    recall@2 : 0.2057    recall@3 : 0.2695    recall@4 : 0.315    recall@5 : 0.3507    recall@10 : 0.4763    recall@20 : 0.6052    recall@30 : 0.6826    recall@50 : 0.7696    ndcg@1 : 0.1913    ndcg@2 : 0.2177    ndcg@3 : 0.2422    ndcg@4 : 0.2594    ndcg@5 : 0.2728    ndcg@10 : 0.3166    ndcg@20 : 0.3554    ndcg@30 : 0.3762    ndcg@50 : 0.3974    precision@1 : 0.1913    precision@2 : 0.1606    precision@3 : 0.1432    precision@4 : 0.1286    precision@5 : 0.1176    precision@10 : 0.0835    precision@20 : 0.0567    precision@30 : 0.0444    precision@50 : 0.0313    map@1 : 0.1913    map@2 : 0.1934    map@3 : 0.2024    map@4 : 0.2094    map@5 : 0.215    map@10 : 0.2325    map@20 : 0.2452    map@30 : 0.251    map@50 : 0.2557
+Sun 15 Mar 2026 11:23:29 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:29 INFO  epoch 26 training [time: 0.22s, train_loss1: 3.6412, train_loss2: 0.0380, train_loss3: 0.0107, train_loss4: 0.0071]
+Sun 15 Mar 2026 11:23:30 INFO  epoch 26 evaluating [time: 0.28s, valid_score: 0.317300]
+Sun 15 Mar 2026 11:23:30 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2062    recall@3 : 0.2689    recall@4 : 0.3154    recall@5 : 0.3513    recall@10 : 0.4771    recall@20 : 0.6041    recall@30 : 0.6853    recall@50 : 0.769    ndcg@1 : 0.1925    ndcg@2 : 0.2187    ndcg@3 : 0.2425    ndcg@4 : 0.26    ndcg@5 : 0.2735    ndcg@10 : 0.3173    ndcg@20 : 0.3554    ndcg@30 : 0.3771    ndcg@50 : 0.3976    precision@1 : 0.1925    precision@2 : 0.1615    precision@3 : 0.1432    precision@4 : 0.1287    precision@5 : 0.1179    precision@10 : 0.0837    precision@20 : 0.0565    precision@30 : 0.0445    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.1943    map@3 : 0.2028    map@4 : 0.21    map@5 : 0.2157    map@10 : 0.2331    map@20 : 0.2455    map@30 : 0.2514    map@50 : 0.2561
+Sun 15 Mar 2026 11:23:30 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:30 INFO  epoch 27 training [time: 0.23s, train_loss1: 3.4618, train_loss2: 0.0382, train_loss3: 0.0107, train_loss4: 0.0074]
+Sun 15 Mar 2026 11:23:30 INFO  epoch 27 evaluating [time: 0.27s, valid_score: 0.317000]
+Sun 15 Mar 2026 11:23:30 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2059    recall@3 : 0.2686    recall@4 : 0.315    recall@5 : 0.3506    recall@10 : 0.4764    recall@20 : 0.6029    recall@30 : 0.6843    recall@50 : 0.7683    ndcg@1 : 0.1931    ndcg@2 : 0.2187    ndcg@3 : 0.2424    ndcg@4 : 0.2598    ndcg@5 : 0.2732    ndcg@10 : 0.317    ndcg@20 : 0.355    ndcg@30 : 0.3766    ndcg@50 : 0.3972    precision@1 : 0.1931    precision@2 : 0.1615    precision@3 : 0.143    precision@4 : 0.1287    precision@5 : 0.1176    precision@10 : 0.0836    precision@20 : 0.0564    precision@30 : 0.0444    precision@50 : 0.0313    map@1 : 0.1931    map@2 : 0.1943    map@3 : 0.2028    map@4 : 0.2099    map@5 : 0.2154    map@10 : 0.2328    map@20 : 0.2452    map@30 : 0.2511    map@50 : 0.2558
+Sun 15 Mar 2026 11:23:30 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:30 INFO  epoch 28 training [time: 0.22s, train_loss1: 3.3950, train_loss2: 0.0384, train_loss3: 0.0107, train_loss4: 0.0075]
+Sun 15 Mar 2026 11:23:31 INFO  epoch 28 evaluating [time: 0.28s, valid_score: 0.317100]
+Sun 15 Mar 2026 11:23:31 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.206    recall@3 : 0.2695    recall@4 : 0.3157    recall@5 : 0.3502    recall@10 : 0.4765    recall@20 : 0.6027    recall@30 : 0.6831    recall@50 : 0.7694    ndcg@1 : 0.1931    ndcg@2 : 0.219    ndcg@3 : 0.2428    ndcg@4 : 0.2602    ndcg@5 : 0.2731    ndcg@10 : 0.3171    ndcg@20 : 0.3549    ndcg@30 : 0.3764    ndcg@50 : 0.3974    precision@1 : 0.1931    precision@2 : 0.1618    precision@3 : 0.1432    precision@4 : 0.1289    precision@5 : 0.1174    precision@10 : 0.0837    precision@20 : 0.0564    precision@30 : 0.0443    precision@50 : 0.0313    map@1 : 0.1931    map@2 : 0.1946    map@3 : 0.2032    map@4 : 0.2103    map@5 : 0.2155    map@10 : 0.233    map@20 : 0.2453    map@30 : 0.2511    map@50 : 0.2559
+Sun 15 Mar 2026 11:23:31 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:31 INFO  epoch 29 training [time: 0.21s, train_loss1: 3.3213, train_loss2: 0.0386, train_loss3: 0.0108, train_loss4: 0.0075]
+Sun 15 Mar 2026 11:23:31 INFO  epoch 29 evaluating [time: 0.27s, valid_score: 0.316700]
+Sun 15 Mar 2026 11:23:31 INFO  valid result: 
+recall@1 : 0.1232    recall@2 : 0.2054    recall@3 : 0.2689    recall@4 : 0.3143    recall@5 : 0.3495    recall@10 : 0.4765    recall@20 : 0.6039    recall@30 : 0.6851    recall@50 : 0.7697    ndcg@1 : 0.1925    ndcg@2 : 0.2185    ndcg@3 : 0.2422    ndcg@4 : 0.2594    ndcg@5 : 0.2725    ndcg@10 : 0.3167    ndcg@20 : 0.3548    ndcg@30 : 0.3765    ndcg@50 : 0.3972    precision@1 : 0.1925    precision@2 : 0.1615    precision@3 : 0.1428    precision@4 : 0.1284    precision@5 : 0.1172    precision@10 : 0.0836    precision@20 : 0.0564    precision@30 : 0.0445    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.1941    map@3 : 0.2026    map@4 : 0.2097    map@5 : 0.2151    map@10 : 0.2326    map@20 : 0.245    map@30 : 0.2509    map@50 : 0.2555
+Sun 15 Mar 2026 11:23:31 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:31 INFO  epoch 30 training [time: 0.21s, train_loss1: 3.2455, train_loss2: 0.0388, train_loss3: 0.0108, train_loss4: 0.0074]
+Sun 15 Mar 2026 11:23:32 INFO  epoch 30 evaluating [time: 0.26s, valid_score: 0.317000]
+Sun 15 Mar 2026 11:23:32 INFO  valid result: 
+recall@1 : 0.1232    recall@2 : 0.2052    recall@3 : 0.2689    recall@4 : 0.3143    recall@5 : 0.3478    recall@10 : 0.478    recall@20 : 0.6035    recall@30 : 0.6812    recall@50 : 0.7696    ndcg@1 : 0.1925    ndcg@2 : 0.218    ndcg@3 : 0.2421    ndcg@4 : 0.2593    ndcg@5 : 0.2718    ndcg@10 : 0.317    ndcg@20 : 0.3547    ndcg@30 : 0.3756    ndcg@50 : 0.397    precision@1 : 0.1925    precision@2 : 0.1609    precision@3 : 0.1428    precision@4 : 0.1284    precision@5 : 0.1169    precision@10 : 0.0838    precision@20 : 0.0564    precision@30 : 0.0443    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.1937    map@3 : 0.2025    map@4 : 0.2096    map@5 : 0.2147    map@10 : 0.2326    map@20 : 0.2449    map@30 : 0.2506    map@50 : 0.2554
+Sun 15 Mar 2026 11:23:32 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:32 INFO  epoch 31 training [time: 0.21s, train_loss1: 3.1941, train_loss2: 0.0389, train_loss3: 0.0108, train_loss4: 0.0074]
+Sun 15 Mar 2026 11:23:32 INFO  epoch 31 evaluating [time: 0.27s, valid_score: 0.317000]
+Sun 15 Mar 2026 11:23:32 INFO  valid result: 
+recall@1 : 0.1232    recall@2 : 0.2054    recall@3 : 0.2684    recall@4 : 0.3137    recall@5 : 0.3481    recall@10 : 0.4779    recall@20 : 0.6025    recall@30 : 0.6802    recall@50 : 0.7692    ndcg@1 : 0.1925    ndcg@2 : 0.2185    ndcg@3 : 0.2421    ndcg@4 : 0.2591    ndcg@5 : 0.2719    ndcg@10 : 0.317    ndcg@20 : 0.3544    ndcg@30 : 0.3754    ndcg@50 : 0.3969    precision@1 : 0.1925    precision@2 : 0.1615    precision@3 : 0.1428    precision@4 : 0.1283    precision@5 : 0.1169    precision@10 : 0.0837    precision@20 : 0.0564    precision@30 : 0.0444    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.194    map@3 : 0.2025    map@4 : 0.2095    map@5 : 0.2147    map@10 : 0.2325    map@20 : 0.2448    map@30 : 0.2506    map@50 : 0.2554
+Sun 15 Mar 2026 11:23:32 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:32 INFO  epoch 32 training [time: 0.23s, train_loss1: 3.2575, train_loss2: 0.0391, train_loss3: 0.0108, train_loss4: 0.0073]
+Sun 15 Mar 2026 11:23:33 INFO  epoch 32 evaluating [time: 0.45s, valid_score: 0.316700]
+Sun 15 Mar 2026 11:23:33 INFO  valid result: 
+recall@1 : 0.1231    recall@2 : 0.2058    recall@3 : 0.2662    recall@4 : 0.3127    recall@5 : 0.348    recall@10 : 0.4779    recall@20 : 0.6036    recall@30 : 0.678    recall@50 : 0.7684    ndcg@1 : 0.1919    ndcg@2 : 0.219    ndcg@3 : 0.2411    ndcg@4 : 0.2585    ndcg@5 : 0.2716    ndcg@10 : 0.3167    ndcg@20 : 0.3544    ndcg@30 : 0.3748    ndcg@50 : 0.3965    precision@1 : 0.1919    precision@2 : 0.1624    precision@3 : 0.1422    precision@4 : 0.1278    precision@5 : 0.1167    precision@10 : 0.0837    precision@20 : 0.0564    precision@30 : 0.0443    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1946    map@3 : 0.2019    map@4 : 0.209    map@5 : 0.2144    map@10 : 0.2322    map@20 : 0.2446    map@30 : 0.2503    map@50 : 0.2551
+Sun 15 Mar 2026 11:23:33 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:33 INFO  epoch 33 training [time: 0.20s, train_loss1: 3.1910, train_loss2: 0.0392, train_loss3: 0.0108, train_loss4: 0.0072]
+Sun 15 Mar 2026 11:23:33 INFO  epoch 33 evaluating [time: 0.14s, valid_score: 0.316600]
+Sun 15 Mar 2026 11:23:33 INFO  valid result: 
+recall@1 : 0.123    recall@2 : 0.2055    recall@3 : 0.2662    recall@4 : 0.3128    recall@5 : 0.3476    recall@10 : 0.4778    recall@20 : 0.6047    recall@30 : 0.6757    recall@50 : 0.7678    ndcg@1 : 0.1913    ndcg@2 : 0.2186    ndcg@3 : 0.2409    ndcg@4 : 0.2584    ndcg@5 : 0.2714    ndcg@10 : 0.3166    ndcg@20 : 0.3547    ndcg@30 : 0.3743    ndcg@50 : 0.3963    precision@1 : 0.1913    precision@2 : 0.1621    precision@3 : 0.1422    precision@4 : 0.128    precision@5 : 0.1167    precision@10 : 0.0837    precision@20 : 0.0566    precision@30 : 0.0443    precision@50 : 0.0313    map@1 : 0.1913    map@2 : 0.1941    map@3 : 0.2017    map@4 : 0.2089    map@5 : 0.2142    map@10 : 0.2321    map@20 : 0.2446    map@30 : 0.2502    map@50 : 0.255
+Sun 15 Mar 2026 11:23:33 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:33 INFO  epoch 34 training [time: 0.19s, train_loss1: 3.1662, train_loss2: 0.0393, train_loss3: 0.0108, train_loss4: 0.0071]
+Sun 15 Mar 2026 11:23:34 INFO  epoch 34 evaluating [time: 0.28s, valid_score: 0.316300]
+Sun 15 Mar 2026 11:23:34 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2055    recall@3 : 0.2654    recall@4 : 0.3128    recall@5 : 0.3471    recall@10 : 0.4765    recall@20 : 0.6045    recall@30 : 0.6745    recall@50 : 0.768    ndcg@1 : 0.1919    ndcg@2 : 0.2188    ndcg@3 : 0.2406    ndcg@4 : 0.2585    ndcg@5 : 0.2712    ndcg@10 : 0.3163    ndcg@20 : 0.3548    ndcg@30 : 0.3741    ndcg@50 : 0.3964    precision@1 : 0.1919    precision@2 : 0.1621    precision@3 : 0.1418    precision@4 : 0.128    precision@5 : 0.1166    precision@10 : 0.0836    precision@20 : 0.0567    precision@30 : 0.0442    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1943    map@3 : 0.2015    map@4 : 0.2089    map@5 : 0.2141    map@10 : 0.2321    map@20 : 0.2447    map@30 : 0.2502    map@50 : 0.2551
+Sun 15 Mar 2026 11:23:34 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:34 INFO  epoch 35 training [time: 0.20s, train_loss1: 3.1820, train_loss2: 0.0394, train_loss3: 0.0108, train_loss4: 0.0070]
+Sun 15 Mar 2026 11:23:34 INFO  epoch 35 evaluating [time: 0.27s, valid_score: 0.316500]
+Sun 15 Mar 2026 11:23:34 INFO  valid result: 
+recall@1 : 0.1234    recall@2 : 0.2055    recall@3 : 0.2656    recall@4 : 0.313    recall@5 : 0.3473    recall@10 : 0.4766    recall@20 : 0.6047    recall@30 : 0.6736    recall@50 : 0.7669    ndcg@1 : 0.1925    ndcg@2 : 0.2189    ndcg@3 : 0.2407    ndcg@4 : 0.2588    ndcg@5 : 0.2716    ndcg@10 : 0.3165    ndcg@20 : 0.355    ndcg@30 : 0.374    ndcg@50 : 0.3963    precision@1 : 0.1925    precision@2 : 0.1621    precision@3 : 0.1418    precision@4 : 0.1283    precision@5 : 0.117    precision@10 : 0.0836    precision@20 : 0.0568    precision@30 : 0.0442    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.1944    map@3 : 0.2016    map@4 : 0.2092    map@5 : 0.2144    map@10 : 0.2322    map@20 : 0.2449    map@30 : 0.2502    map@50 : 0.2551
+Sun 15 Mar 2026 11:23:34 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:34 INFO  epoch 36 training [time: 0.21s, train_loss1: 3.1818, train_loss2: 0.0396, train_loss3: 0.0108, train_loss4: 0.0068]
+Sun 15 Mar 2026 11:23:35 INFO  epoch 36 evaluating [time: 0.26s, valid_score: 0.316500]
+Sun 15 Mar 2026 11:23:35 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2055    recall@3 : 0.2654    recall@4 : 0.3128    recall@5 : 0.3473    recall@10 : 0.4767    recall@20 : 0.6046    recall@30 : 0.6736    recall@50 : 0.7678    ndcg@1 : 0.1919    ndcg@2 : 0.2188    ndcg@3 : 0.2405    ndcg@4 : 0.2586    ndcg@5 : 0.2715    ndcg@10 : 0.3165    ndcg@20 : 0.3549    ndcg@30 : 0.374    ndcg@50 : 0.3964    precision@1 : 0.1919    precision@2 : 0.1621    precision@3 : 0.1416    precision@4 : 0.1281    precision@5 : 0.117    precision@10 : 0.0837    precision@20 : 0.0568    precision@30 : 0.0442    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1943    map@3 : 0.2014    map@4 : 0.209    map@5 : 0.2143    map@10 : 0.2322    map@20 : 0.2448    map@30 : 0.2503    map@50 : 0.2551
+Sun 15 Mar 2026 11:23:35 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:35 INFO  epoch 37 training [time: 0.22s, train_loss1: 3.1627, train_loss2: 0.0397, train_loss3: 0.0108, train_loss4: 0.0068]
+Sun 15 Mar 2026 11:23:35 INFO  epoch 37 evaluating [time: 0.29s, valid_score: 0.316400]
+Sun 15 Mar 2026 11:23:35 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2055    recall@3 : 0.2653    recall@4 : 0.3128    recall@5 : 0.3476    recall@10 : 0.4761    recall@20 : 0.6044    recall@30 : 0.6753    recall@50 : 0.7667    ndcg@1 : 0.1919    ndcg@2 : 0.2188    ndcg@3 : 0.2405    ndcg@4 : 0.2586    ndcg@5 : 0.2717    ndcg@10 : 0.3164    ndcg@20 : 0.3549    ndcg@30 : 0.3744    ndcg@50 : 0.3961    precision@1 : 0.1919    precision@2 : 0.1621    precision@3 : 0.1416    precision@4 : 0.1281    precision@5 : 0.1173    precision@10 : 0.0837    precision@20 : 0.0568    precision@30 : 0.0443    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1943    map@3 : 0.2014    map@4 : 0.209    map@5 : 0.2144    map@10 : 0.2322    map@20 : 0.2449    map@30 : 0.2504    map@50 : 0.2551
+Sun 15 Mar 2026 11:23:35 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:35 INFO  epoch 38 training [time: 0.21s, train_loss1: 3.1035, train_loss2: 0.0398, train_loss3: 0.0108, train_loss4: 0.0067]
+Sun 15 Mar 2026 11:23:36 INFO  epoch 38 evaluating [time: 0.28s, valid_score: 0.316500]
+Sun 15 Mar 2026 11:23:36 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2055    recall@3 : 0.2655    recall@4 : 0.3129    recall@5 : 0.3481    recall@10 : 0.4762    recall@20 : 0.6048    recall@30 : 0.6756    recall@50 : 0.7676    ndcg@1 : 0.1919    ndcg@2 : 0.2188    ndcg@3 : 0.2406    ndcg@4 : 0.2587    ndcg@5 : 0.2719    ndcg@10 : 0.3165    ndcg@20 : 0.3551    ndcg@30 : 0.3746    ndcg@50 : 0.3964    precision@1 : 0.1919    precision@2 : 0.1621    precision@3 : 0.1418    precision@4 : 0.1283    precision@5 : 0.1173    precision@10 : 0.0838    precision@20 : 0.0569    precision@30 : 0.0444    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1943    map@3 : 0.2015    map@4 : 0.2091    map@5 : 0.2145    map@10 : 0.2323    map@20 : 0.245    map@30 : 0.2505    map@50 : 0.2552
+Sun 15 Mar 2026 11:23:36 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:36 INFO  epoch 39 training [time: 0.21s, train_loss1: 3.1388, train_loss2: 0.0400, train_loss3: 0.0108, train_loss4: 0.0066]
+Sun 15 Mar 2026 11:23:36 INFO  epoch 39 evaluating [time: 0.26s, valid_score: 0.316400]
+Sun 15 Mar 2026 11:23:36 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2052    recall@3 : 0.2655    recall@4 : 0.313    recall@5 : 0.3487    recall@10 : 0.4762    recall@20 : 0.6054    recall@30 : 0.6757    recall@50 : 0.7672    ndcg@1 : 0.1919    ndcg@2 : 0.2185    ndcg@3 : 0.2406    ndcg@4 : 0.2586    ndcg@5 : 0.2721    ndcg@10 : 0.3164    ndcg@20 : 0.3552    ndcg@30 : 0.3746    ndcg@50 : 0.3963    precision@1 : 0.1919    precision@2 : 0.1618    precision@3 : 0.1418    precision@4 : 0.1283    precision@5 : 0.1174    precision@10 : 0.0837    precision@20 : 0.0569    precision@30 : 0.0444    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1941    map@3 : 0.2014    map@4 : 0.209    map@5 : 0.2145    map@10 : 0.2322    map@20 : 0.245    map@30 : 0.2505    map@50 : 0.2552
+Sun 15 Mar 2026 11:23:36 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:36 INFO  epoch 40 training [time: 0.21s, train_loss1: 3.1646, train_loss2: 0.0401, train_loss3: 0.0108, train_loss4: 0.0064]
+Sun 15 Mar 2026 11:23:37 INFO  epoch 40 evaluating [time: 0.26s, valid_score: 0.316900]
+Sun 15 Mar 2026 11:23:37 INFO  valid result: 
+recall@1 : 0.1233    recall@2 : 0.2076    recall@3 : 0.266    recall@4 : 0.3131    recall@5 : 0.3488    recall@10 : 0.4763    recall@20 : 0.6055    recall@30 : 0.6769    recall@50 : 0.7661    ndcg@1 : 0.1919    ndcg@2 : 0.2201    ndcg@3 : 0.2412    ndcg@4 : 0.2591    ndcg@5 : 0.2725    ndcg@10 : 0.3169    ndcg@20 : 0.3556    ndcg@30 : 0.3754    ndcg@50 : 0.3966    precision@1 : 0.1919    precision@2 : 0.163    precision@3 : 0.1422    precision@4 : 0.1284    precision@5 : 0.1175    precision@10 : 0.0838    precision@20 : 0.0569    precision@30 : 0.0445    precision@50 : 0.0313    map@1 : 0.1919    map@2 : 0.1953    map@3 : 0.202    map@4 : 0.2095    map@5 : 0.215    map@10 : 0.2327    map@20 : 0.2455    map@30 : 0.2511    map@50 : 0.2558
+Sun 15 Mar 2026 11:23:37 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:37 INFO  epoch 41 training [time: 0.22s, train_loss1: 3.1103, train_loss2: 0.0402, train_loss3: 0.0108, train_loss4: 0.0064]
+Sun 15 Mar 2026 11:23:37 INFO  epoch 41 evaluating [time: 0.27s, valid_score: 0.317500]
+Sun 15 Mar 2026 11:23:37 INFO  valid result: 
+recall@1 : 0.1234    recall@2 : 0.21    recall@3 : 0.2676    recall@4 : 0.3132    recall@5 : 0.3486    recall@10 : 0.4769    recall@20 : 0.6058    recall@30 : 0.6774    recall@50 : 0.764    ndcg@1 : 0.1925    ndcg@2 : 0.2217    ndcg@3 : 0.2426    ndcg@4 : 0.2597    ndcg@5 : 0.273    ndcg@10 : 0.3175    ndcg@20 : 0.3563    ndcg@30 : 0.376    ndcg@50 : 0.3968    precision@1 : 0.1925    precision@2 : 0.1642    precision@3 : 0.143    precision@4 : 0.1286    precision@5 : 0.1175    precision@10 : 0.0838    precision@20 : 0.0569    precision@30 : 0.0445    precision@50 : 0.0313    map@1 : 0.1925    map@2 : 0.1967    map@3 : 0.2032    map@4 : 0.2103    map@5 : 0.2157    map@10 : 0.2334    map@20 : 0.2462    map@30 : 0.2518    map@50 : 0.2564
+Sun 15 Mar 2026 11:23:37 INFO  Running E-step ! 
+Sun 15 Mar 2026 11:23:37 INFO  epoch 42 training [time: 0.22s, train_loss1: 3.1435, train_loss2: 0.0403, train_loss3: 0.0108, train_loss4: 0.0060]
+Sun 15 Mar 2026 11:23:38 INFO  epoch 42 evaluating [time: 0.27s, valid_score: 0.317700]
+Sun 15 Mar 2026 11:23:38 INFO  valid result: 
+recall@1 : 0.1231    recall@2 : 0.2101    recall@3 : 0.268    recall@4 : 0.314    recall@5 : 0.3498    recall@10 : 0.4771    recall@20 : 0.6057    recall@30 : 0.6783    recall@50 : 0.7607    ndcg@1 : 0.1919    ndcg@2 : 0.2218    ndcg@3 : 0.2428    ndcg@4 : 0.26    ndcg@5 : 0.2734    ndcg@10 : 0.3177    ndcg@20 : 0.3563    ndcg@30 : 0.3763    ndcg@50 : 0.3963    precision@1 : 0.1919    precision@2 : 0.1645    precision@3 : 0.1434    precision@4 : 0.1289    precision@5 : 0.1178    precision@10 : 0.0838    precision@20 : 0.057    precision@30 : 0.0446    precision@50 : 0.0312    map@1 : 0.1919    map@2 : 0.1967    map@3 : 0.2033    map@4 : 0.2104    map@5 : 0.2159    map@10 : 0.2335    map@20 : 0.2462    map@30 : 0.2519    map@50 : 0.2564
+Sun 15 Mar 2026 11:23:38 INFO  Finished training, best eval result in epoch 21
+Sun 15 Mar 2026 11:23:38 INFO  Loading model structure and parameters from saved/SCL-Mar-15-2026_11-23-15.pth
+Sun 15 Mar 2026 11:23:38 INFO  best valid : OrderedDict([('recall@1', 0.1271), ('recall@2', 0.2145), ('recall@3', 0.276), ('recall@4', 0.3238), ('recall@5', 0.3577), ('recall@10', 0.4778), ('recall@20', 0.6236), ('recall@30', 0.68), ('recall@50', 0.7631), ('ndcg@1', 0.1955), ('ndcg@2', 0.2257), ('ndcg@3', 0.2491), ('ndcg@4', 0.2674), ('ndcg@5', 0.2799), ('ndcg@10', 0.322), ('ndcg@20', 0.366), ('ndcg@30', 0.3817), ('ndcg@50', 0.4019), ('precision@1', 0.1955), ('precision@2', 0.166), ('precision@3', 0.1468), ('precision@4', 0.1329), ('precision@5', 0.12), ('precision@10', 0.0843), ('precision@20', 0.0594), ('precision@30', 0.0449), ('precision@50', 0.0314), ('map@1', 0.1955), ('map@2', 0.2002), ('map@3', 0.2085), ('map@4', 0.2164), ('map@5', 0.2215), ('map@10', 0.2385), ('map@20', 0.2532), ('map@30', 0.2579), ('map@50', 0.2625)])
+Sun 15 Mar 2026 11:23:38 INFO  test result: OrderedDict([('recall@1', 0.1438), ('recall@2', 0.2316), ('recall@3', 0.2804), ('recall@4', 0.3213), ('recall@5', 0.3503), ('recall@10', 0.4672), ('recall@20', 0.6164), ('recall@30', 0.6762), ('recall@50', 0.7597), ('ndcg@1', 0.2383), ('ndcg@2', 0.2589), ('ndcg@3', 0.2703), ('ndcg@4', 0.2834), ('ndcg@5', 0.2931), ('ndcg@10', 0.3322), ('ndcg@20', 0.3754), ('ndcg@30', 0.3912), ('ndcg@50', 0.4111), ('precision@1', 0.2383), ('precision@2', 0.1926), ('precision@3', 0.1589), ('precision@4', 0.1405), ('precision@5', 0.1256), ('precision@10', 0.0871), ('precision@20', 0.0596), ('precision@30', 0.0446), ('precision@50', 0.031), ('map@1', 0.2383), ('map@2', 0.2317), ('map@3', 0.2304), ('map@4', 0.2349), ('map@5', 0.2384), ('map@10', 0.2537), ('map@20', 0.2676), ('map@30', 0.2721), ('map@50', 0.2766)])
+Sun 15 Mar 2026 11:23:38 INFO  training time: 22.0884s
+Sun 15 Mar 2026 11:23:38 INFO  result file: results/scl_seed2024.json
