@@ -111,8 +111,7 @@ def run_single_model(args):
         'test_result': test_result
     }
 
-    # 나중에 /again 삭제 필요
-    result_path = f"results/again4/{args.model}_{config_tag}_seed{config['seed']}.json"
+    result_path = f"results/{args.model}_{config_tag}_seed{config['seed']}.json"
     
     with open(result_path, 'w') as f:
         json.dump(result_record, f, indent=2)
