@@ -152,7 +152,3 @@ tbd
 > 📄 Paper link: *(추후 DOI/링크 추가 예정)*
 
 ---
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
