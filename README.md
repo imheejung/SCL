@@ -21,7 +21,7 @@ SCL integrates **three contrastive learning objectives** into GNN-based collabor
 | **Semantic CL** *(ours)* | Contrastive learning using cluster centroids from text-based embeddings (KLUE-RoBERTa) |
 
 <p align="center">
-  <img src="assets/scl_concept.png" alt="SCL concept figure" width="600"/>
+  <img src="scl_concept.png" alt="SCL concept figure" width="600"/>
 </p>
 
 ---
