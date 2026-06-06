@@ -149,6 +149,6 @@ If you find this work useful, please cite:
 tbd
 ```
 
-> 📄 Paper link: *(추후 DOI/링크 추가 예정)*
+> 📄 Paper link: https://doi.org/10.1080/0144929X.2026.2678385
 
 ---
