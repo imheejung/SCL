@@ -146,7 +146,14 @@ Hyperparameters are managed via YAML files in `configs/`. Key SCL hyperparameter
 If you find this work useful, please cite:
 
 ```bibtex
-tbd
+@article{cho2026understanding,
+  title={Understanding user preferences through social media: leveraging semantic-enriched contrastive learning for enhanced travel recommendations},
+  author={Cho, Heejung and Lee, Juyeob and Cervera, Enric and del Pobil, Angel P and Park, Eunil},
+  journal={Behaviour \& Information Technology},
+  pages={1--11},
+  year={2026},
+  publisher={Taylor \& Francis}
+}
 ```
 
 > 📄 Paper link: https://doi.org/10.1080/0144929X.2026.2678385
